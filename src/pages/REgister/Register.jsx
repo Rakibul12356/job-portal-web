@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Lottie from "lottie-react";
 import Animation from "../../assets/lotteiFiles/Animation - 1743704621019 (1).json"
+import AuthContext from '../../contex/AuthContex/AuthContex';
 const Register = () => {
+
+    const{ createUser} =useContext(AuthContext)
+
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -10,8 +14,13 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, email, password)
 
-        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-        return passwordRegex.test(password);
+        createUser(email,password)
+        .then(result=>{
+            console.log(result.user)
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
     }
     return (
         <div>

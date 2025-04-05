@@ -1,8 +1,9 @@
 import React, {  useContext } from 'react';
 import Lottie from "lottie-react";
 import Animation from "../../assets/lotteiFiles/Animation - 1743704621019 (1).json"
-import { FcGoogle } from "react-icons/fc";
+
 import AuthContext from '../../contex/AuthContex/AuthContex';
+import LoginWithGoogle from '../shared/socialLogin/LoginWithGoogle';
 
 
 const SignIn = () => {
@@ -33,8 +34,7 @@ const SignIn = () => {
                         <div className="card-body">
                             <h1 className="text-5xl font-bold">Please LogIn</h1>
                            
-                                <button className="mt-2 w-full btn btn-outline ">Login With Google<FcGoogle className='text-2xl'/></button>
-                            
+                            <LoginWithGoogle></LoginWithGoogle>
                             <h1 className='text-center mt-2 text-xl font-bold'>Or</h1>
                             <form onSubmit={handleSignIN}>
                                 <fieldset className="fieldset">

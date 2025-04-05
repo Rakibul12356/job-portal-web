@@ -38,7 +38,7 @@ const Navbar = () => {
           <a className="btn btn-ghost text-xl">
             <img className='h-16' src={navIcon} alt="" />
           </a>
-          <h3 className='text-3xl font-bold text-primary'>Job Portal</h3>
+          <h3 className='md:text-3xl font-bold text-primary'>Job Portal</h3>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

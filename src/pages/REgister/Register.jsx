@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Lottie from "lottie-react";
 import Animation from "../../assets/lotteiFiles/Animation - 1743704621019 (1).json"
 import AuthContext from '../../contex/AuthContex/AuthContex';
+import LoginWithGoogle from '../shared/socialLogin/LoginWithGoogle';
 const Register = () => {
 
     const{ createUser} =useContext(AuthContext)
@@ -49,6 +50,9 @@ const Register = () => {
                                     <button className="btn bg-primary mt-4">Register</button>
                                 </fieldset>
                             </form>
+                            <div className='divider'>OR</div>
+                            <LoginWithGoogle></LoginWithGoogle>
+                          
                         </div>
                     </div>
                 </div>

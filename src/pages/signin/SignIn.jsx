@@ -35,7 +35,7 @@ const SignIn = () => {
                             <h1 className="text-5xl font-bold">Please LogIn</h1>
                            
                             <LoginWithGoogle></LoginWithGoogle>
-                            <h1 className='text-center mt-2 text-xl font-bold'>Or</h1>
+                           <div className='divider'>OR</div>
                             <form onSubmit={handleSignIN}>
                                 <fieldset className="fieldset">
                                     <label className="fieldset-label">Email</label>

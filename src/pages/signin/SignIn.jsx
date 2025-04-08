@@ -6,7 +6,6 @@ import AuthContext from '../../contex/AuthContex/AuthContex';
 import LoginWithGoogle from '../shared/socialLogin/LoginWithGoogle';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
 const SignIn = () => {
     const { signInUser } = useContext(AuthContext)
     const location = useLocation()
@@ -38,7 +37,6 @@ const SignIn = () => {
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
                             <h1 className="text-5xl font-bold">Please LogIn</h1>
-
                             <LoginWithGoogle></LoginWithGoogle>
                             <div className='divider'>OR</div>
                             <form onSubmit={handleSignIN}>

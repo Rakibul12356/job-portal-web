@@ -42,15 +42,14 @@ const HotJobCard = ({ job }) => {
                     <p>{description}</p>
                     <div className='gap-2 flex'>
                         {
-                            requirements.map(requirement=><button className="btn btn-xs">{requirement.slice(0,7)}</button>)
+                            requirements.map(requirement => <button className="btn btn-xs">{requirement.slice(0, 7)}</button>)
                         }
                     </div>
-                        <div>
-                            <h2><span>${salaryRange.min}-{salaryRange.max}.</span>{salaryRange.currency}/per month</h2>
-                        </div>
-
+                    <div>
+                        <h2><span>${salaryRange.min}-{salaryRange.max}.</span>{salaryRange.currency}/per month</h2>
+                    </div>
                     <div className="card-actions justify-end">
-                      <Link to={`/jobs/${_id}`}>  <button className="btn btn-primary">Job Details</button></Link>
+                        <Link to={`/jobs/${_id}`}>  <button className="btn btn-primary">Job Details</button></Link>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const JobDetails = () => {
     const { title,
+        _id,
         location,
         jobType,
         category,
@@ -66,7 +67,9 @@ const JobDetails = () => {
                         <h1 className='text- font-bold'>contact:{hr_email}</h1>
                     </div>
                     <div className="card-actions justify-end">
+                        <Link to={`/jobApply/${_id}`}>
                         <button className="btn btn-dash btn-error">Apply Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>

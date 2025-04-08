@@ -3,15 +3,22 @@ import MainLayOut from "../layout/MainLayOut";
 import Home from "../pages/Home/Home";
 import Register from "../pages/REgister/Register";
 import SignIn from "../pages/signin/SignIn";
+import JobDetails from "../pages/jobDetails/JobDetails";
+import ErrorElement from "../Error/ErrorElement";
   const router = createBrowserRouter([
   {
       path: "/",
       element:<MainLayOut></MainLayOut> ,
-      errorElement: <h2 className="text-4xl text-center">The page is Not Found</h2>,
+      errorElement:<ErrorElement></ErrorElement>,
       children:[
         {
           path:'/',
           element:<Home></Home>  
+        },
+        {
+          path:'/jobs/:id',
+          element:<JobDetails></JobDetails>,
+          loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
         },
         {
           path:"/register",

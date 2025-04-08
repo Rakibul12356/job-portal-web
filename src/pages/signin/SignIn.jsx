@@ -1,27 +1,32 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import Lottie from "lottie-react";
 import Animation from "../../assets/lotteiFiles/Animation - 1743704621019 (1).json"
 
 import AuthContext from '../../contex/AuthContex/AuthContex';
 import LoginWithGoogle from '../shared/socialLogin/LoginWithGoogle';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SignIn = () => {
-    const {signInUser}=useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from =location.state || '/'
 
-    const handleSignIN =e=>{
+    const handleSignIN = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log( email, password)
-        signInUser(email,password)
-        .then(result=>{
-            console.log(result.user)
-        })
-        .catch(error=>{
-            console.log(error.message)
-        })
+        console.log(email, password)
+        signInUser(email, password)
+            .then(result => {
+                navigate(from)
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
     return (
         <div>
@@ -33,9 +38,9 @@ const SignIn = () => {
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
                             <h1 className="text-5xl font-bold">Please LogIn</h1>
-                           
+
                             <LoginWithGoogle></LoginWithGoogle>
-                           <div className='divider'>OR</div>
+                            <div className='divider'>OR</div>
                             <form onSubmit={handleSignIN}>
                                 <fieldset className="fieldset">
                                     <label className="fieldset-label">Email</label>

@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import useAuth from '../../../hooks/useAuth';
+
 
 const AddJob = () => {
+    const navigate = useNavigate()
+    const { user } = useAuth()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,11 +33,26 @@ const AddJob = () => {
             hr_name: form.hr_name.value,
             company_logo: form.company_logo.value,
         };
-
-        console.log("Submitted Job:", job);
-
         // Optional: send job to backend
         // fetch('/api/jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(job) })
+        fetch('http://localhost:5000/jobs', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(job)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "Added job successfully",
+                        icon: "success"
+                    });
+                    navigate('/')
+                }
+            })
     };
 
     return (
@@ -72,10 +93,12 @@ const AddJob = () => {
                 <input name="responsibilities" className="input w-full" placeholder="Responsibilities (comma separated)" />
                 {/**HR Email */}
                 <label className="fieldset-label">HR Email</label>
-                <input name="hr_email" className="input w-full" placeholder="HR Email" required />
+                <input name="hr_email" defaultValue={user.email} className="input w-full" placeholder="HR Email" required />
                 {/**LHR Name*/}
                 <label className="fieldset-label">HR Name</label>
-                <input name="hr_name" className="input w-full" placeholder="HR Name" required />
+                <input name="hr_name" defaultValue={user.
+                    displayName
+                } className="input w-full" placeholder="HR Name" required />
                 {/**Company Logo URL */}
                 <label className="fieldset-label">Company Logo URL</label>
                 <input name="company_logo" className="input w-full" placeholder="Company Logo URL" required />

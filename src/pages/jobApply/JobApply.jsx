@@ -45,12 +45,12 @@ const JobApply = () => {
         <div className=" min-h-screen mt-2">
             <form onSubmit={handleJobSubmit} className="card-body">
                 <label className="fieldset-label">Linkedin Url</label>
-                <input type="url"  name='linkedin' className="input w-full" placeholder="Your linkedin profile url" />
+                <input type="url" required  name='linkedin' className="input w-full" placeholder="Your linkedin profile url" />
                 <label className="fieldset-label">Github Url</label>
-                <input type="url" name='github' className="input w-full" placeholder="Your Github url" />
+                <input type="url"required name='github' className="input w-full" placeholder="Your Github url" />
                 <label className="fieldset-label">Resume Url</label>
                 <input type="url" name='resume' className="input w-full" placeholder="Your Resume url" />
-                <button className="btn btn-neutral mt-4">Submit</button>
+                <button className="btn btn-neutral mt-4">X</button>
             </form>
         </div>
     );

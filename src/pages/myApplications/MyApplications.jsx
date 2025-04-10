@@ -13,7 +13,7 @@ const MyApplications = () => {
     }, [user.email])
     console.log(jobs)
     return (
-        <div>
+        <div className=''>
             <h2>
                 My Applications:{jobs.length}
             </h2>

@@ -50,7 +50,7 @@ const AddJob = () => {
                         text: "Added job successfully",
                         icon: "success"
                     });
-                    navigate('/')
+                    navigate('/myPostedJobs')
                 }
             })
     };

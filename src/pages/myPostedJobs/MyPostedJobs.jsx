@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth'
+import { Link } from 'react-router-dom';
 const MyPostedJobs = () => {
     const [jobs,setJobs]=useState([]);
     const {user}=useAuth()
@@ -59,7 +60,9 @@ const MyPostedJobs = () => {
                                 <span className="badge badge-ghost badge-sm">{job.category}</span>
                             </td>
                             <td>{job.applicationDeadline}</td>
-                            <td><button className='btn btn-link'>View Application</button></td>
+                            <td>
+                                <Link to={`/viewApplication/${job._id}`}><button className='btn btn-link'>View Application</button></Link>
+                                </td>
                             
                         </tr>)
                        }

@@ -5,12 +5,13 @@ import Animation from "../../assets/lotteiFiles/Animation - 1743704621019 (1).js
 import AuthContext from '../../contex/AuthContex/AuthContex';
 import LoginWithGoogle from '../shared/socialLogin/LoginWithGoogle';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SignIn = () => {
     const { signInUser } = useContext(AuthContext)
-    const location = useLocation()
-    const navigate = useNavigate()
-    const from =location.state || '/'
+    //const location = useLocation()
+   //const navigate = useNavigate()
+    //const from =location.state || '/'
 
     const handleSignIN = e => {
         e.preventDefault();
@@ -20,8 +21,14 @@ const SignIn = () => {
         console.log(email, password)
         signInUser(email, password)
             .then(result => {
-                navigate(from)
-                console.log(result.user)
+                //navigate(from)
+
+                console.log(result.user.email);
+                const user ={email:email}
+                axios.post('http://localhost:5000/jwt',user)
+                .then(res=>{
+                    console.log(res.data)
+                })
             })
             .catch(error => {
                 console.log(error.message)

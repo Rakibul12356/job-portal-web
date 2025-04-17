@@ -9,9 +9,9 @@ import axios from 'axios';
 
 const SignIn = () => {
     const { signInUser } = useContext(AuthContext)
-    //const location = useLocation()
-   //const navigate = useNavigate()
-    //const from =location.state || '/'
+     const location = useLocation()
+    const navigate = useNavigate()
+    const from =location.state || '/'
 
     const handleSignIN = e => {
         e.preventDefault();
@@ -24,11 +24,12 @@ const SignIn = () => {
                 //navigate(from)
 
                 console.log(result.user.email);
-                const user ={email:email}
-                axios.post('http://localhost:5000/jwt',user)
-                .then(res=>{
-                    console.log(res.data)
-                })
+                const user = { email: email }
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                        navigate(from)
+                    })
             })
             .catch(error => {
                 console.log(error.message)
